@@ -4,7 +4,7 @@ This is a .NET console application that calculates the lesser angle in degrees b
 ## Problem Statement
 Write a console application that calculates the lesser angle between the hour and minute hands of an analogue clock. The user should be able to input the hours and minutes of the time and the program must provide the output in the console window.
 
-##Solution Overview
+## Solution Overview
 
 The application uses three classes:
 
@@ -42,4 +42,5 @@ The 'CalculateDepth' class provides a solution to the problem of calculating the
 
 ## References
 [C# Programming Guide](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/)
+
 [xUnit Testing Framework](https://xunit.net/)
