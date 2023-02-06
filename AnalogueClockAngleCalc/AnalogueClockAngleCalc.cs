@@ -1,27 +1,29 @@
-﻿namespace AnalogueClockAngleCalc
+﻿using System.Globalization;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("ReizAssignment.Tests")]
+namespace AnalogueClockAngleCalc
 {
     class Program
     {
         static void Main(string[] args)
         {
             bool isValidInput = false;
+            string dateFormat = "HH:mm";
+
 
             while (!isValidInput)
             {
                 Console.WriteLine("Enter the time in the format HH:MM");
-                string time = Console.ReadLine();
+                string dateString = Console.ReadLine();
 
-                if (CheckerTime.IsInputValid(time))
+                if (DateTime.TryParseExact(dateString, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateResult))
                 {
-                    string[] timeArray = time.Split(':');
-                    int hour = Convert.ToInt32(timeArray[0]);
-                    int minute = Convert.ToInt32(timeArray[1]);
+                    int hour = dateResult.Hour;
+                    int minute = dateResult.Minute;
 
-                    if (CheckerTime.IsTimeValid(hour, minute))
-                    {
-                        Console.WriteLine("The angle between the hour and minute hands is {0} degrees", CalculateAngle.GetAngle(hour, minute));
-                        isValidInput = true;
-                    }
+                    Console.WriteLine("The angle between the hour and minute hands is {0} degrees", CalculateAngle.GetAngle(hour, minute));
+                    isValidInput = true;
                 }
                 else
                 {
